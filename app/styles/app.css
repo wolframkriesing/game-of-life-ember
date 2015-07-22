@@ -1,0 +1,14 @@
+.row {
+  clear: both;
+}
+
+.cell {
+  height: 5px;
+  width: 5px;
+  border: 1px solid gray;
+  float: left;
+}
+
+.alive {
+  background-color: black;
+}
