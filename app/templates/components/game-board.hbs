@@ -1,6 +1,6 @@
-{{#each board as |row rowIndex|}}
+{{#each board as |row|}}
   <div class='row'>
-    {{#each row key="@index" as |cell cellIndex|}}
+    {{#each row key="@index" as |cell|}}
       {{game-cell cell=cell}}
     {{/each}}
   </div>
