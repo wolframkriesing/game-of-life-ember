@@ -15,7 +15,7 @@ const wrapAround = function(index, length) {
 
 export default Ember.Component.extend({
   playing: false,
-  width: 60,
+  width: 50,
   height: 50,
   initialBoard: computed('width', 'height', function() {
     const {width, height} = this.getProperties('width', 'height');
