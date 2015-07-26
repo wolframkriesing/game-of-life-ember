@@ -24,8 +24,4 @@ export default Ember.Object.extend({
       this.set('alive', nextState);
     });
   },
-
-  click() {
-    this.toggleProperty('alive');
-  }
 });
