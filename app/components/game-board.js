@@ -15,16 +15,20 @@ const wrapAround = function(index, length) {
 
 export default Ember.Component.extend({
   playing: false,
+  widthPreview: 50,
+  heightPreview: 50,
+  densityPreview: 0.2,
   width: 50,
   height: 50,
-  initialBoard: computed('width', 'height', function() {
+  density: 0.2,
+  initialBoard: computed('width', 'height', 'density', function() {
     const {width, height} = this.getProperties('width', 'height');
 
     const board = [];
     for (let i = 0; i < height; i++) {
       const row = [];
       for (let j = 0; j < width; j++) {
-        const alive = Math.random() < 0.2;
+        const alive = Math.random() < this.get('density');
         row.pushObject(Cell.create({alive}));
       }
       board.pushObject(row);

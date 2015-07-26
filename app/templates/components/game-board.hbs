@@ -1,3 +1,40 @@
+<div>
+  <label for='#width-input'>Width</label>
+  <input
+    min=4
+    max=100
+    type="range"
+    id='width-input'
+    value={{width}}
+    oninput={{action (mut widthPreview) value='target.value'}}
+    onchange={{action (mut width) value='target.value'}}> {{widthPreview}}
+</div>
+
+<div>
+  <label for='#height-input'>Height</label>
+  <input
+    min=4
+    max=100
+    type="range"
+    id='height-input'
+    value={{height}}
+    oninput={{action (mut heightPreview) value='target.value'}}
+    onchange={{action (mut height) value='target.value'}}> {{heightPreview}}
+</div>
+
+<div>
+  <label for='#density-input'>Density</label>
+  <input
+    min=0
+    max=1
+    step=0.01
+    type="range"
+    id='density-input'
+    value={{density}}
+    oninput={{action (mut densityPreview) value='target.value'}}
+    onchange={{action (mut density) value='target.value'}}> {{densityPreview}}
+</div>
+
 {{#each board as |row|}}
   <div class='row'>
     {{#each row key="@index" as |cell|}}
