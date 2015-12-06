@@ -17,10 +17,7 @@ export default Ember.Component.extend({
 
   @computed('width', 'height')
   board() {
-    const board = this._setupBoard();
-    this._registerNeighbours(board);
-
-    return board;
+    return this._setupBoard();
   },
 
   actions: {
@@ -50,21 +47,18 @@ export default Ember.Component.extend({
   },
 
   _setupBoard() {
-    const width=10, height=10;
-    const board = [];
-    for (let i = 0; i < height; i++) {
-      const row = [];
-      for (let j = 0; j < width; j++) {
-        const alive = Math.random() < 0.5;
-        row.pushObject(Cell.create({alive}));
-      }
-      board.pushObject(row);
-    }
-
+    const board = [
+      [Cell.create(), Cell.create(), Cell.create(), Cell.create({alive:true}), Cell.create()],
+      [Cell.create(), Cell.create(), Cell.create(), Cell.create(), Cell.create({alive:true})],
+      [Cell.create(), Cell.create(), Cell.create({alive:true}), Cell.create({alive:true}), Cell.create({alive:true})],
+      [Cell.create(), Cell.create(), Cell.create(), Cell.create(), Cell.create()],
+      [Cell.create(), Cell.create(), Cell.create(), Cell.create(), Cell.create()],
+    ];
+    this._setNeighboursForCell(board);
     return board;
   },
 
-  _registerNeighbours(board) {
+  _setNeighboursForCell(board) {
     return board.map(function(row, row_index, board) {
       return row.map(function(cell, cell_index) {
         const neighbours = [
@@ -77,8 +71,7 @@ export default Ember.Component.extend({
           board[wrapAround(row_index + 1, board.length)][wrapAround(cell_index, row.length)],
           board[wrapAround(row_index + 1, board.length)][wrapAround(cell_index + 1, row.length)]
         ];
-
-        cell.set('neighbours', neighbours);
+        cell.neighbours = neighbours;
         return cell;
       });
     });
