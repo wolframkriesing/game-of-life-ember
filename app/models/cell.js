@@ -24,5 +24,5 @@ export default Ember.Object.extend({
     run.next(this, function() {
       this.set('alive', nextState);
     });
-  },
+  }
 });

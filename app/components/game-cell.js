@@ -9,5 +9,5 @@ export default Ember.Component.extend({
     run.next(this, function() {
       this.toggleProperty('alive');
     });
-  },
+  }
 });

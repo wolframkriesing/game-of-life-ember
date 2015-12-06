@@ -27,7 +27,7 @@ export default class Board {
   _setNeighboursForCell(board) {
     return board.map(function(row, row_index, board) {
       return row.map(function(cell, cell_index) {
-        const neighbours = [
+        cell.neighbours = [
           board[wrapAround(row_index - 1, board.length)][wrapAround(cell_index - 1, row.length)],
           board[wrapAround(row_index - 1, board.length)][wrapAround(cell_index, row.length)],
           board[wrapAround(row_index - 1, board.length)][wrapAround(cell_index + 1, row.length)],
@@ -37,7 +37,6 @@ export default class Board {
           board[wrapAround(row_index + 1, board.length)][wrapAround(cell_index, row.length)],
           board[wrapAround(row_index + 1, board.length)][wrapAround(cell_index + 1, row.length)]
         ];
-        cell.neighbours = neighbours;
         return cell;
       });
     });
