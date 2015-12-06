@@ -14,16 +14,10 @@ const wrapAround = function(index, length) {
 
 export default Ember.Component.extend({
   playing: false,
-  widthPreview: 50,
-  heightPreview: 50,
-  densityPreview: 0.2,
-  width: 50,
-  height: 50,
-  density: 0.2,
 
-  @computed('width', 'height', 'density')
-  board(width, height, density) {
-    const board = this._setupBoard(width, height, density);
+  @computed('width', 'height')
+  board() {
+    const board = this._setupBoard();
     this._registerNeighbours(board);
 
     return board;
@@ -42,7 +36,7 @@ export default Ember.Component.extend({
     pause() {
       this.set('playing', false);
       Ember.run.cancel(this.get('runLater'));
-    },
+    }
   },
 
   _step(shouldRepeat) {
@@ -55,12 +49,13 @@ export default Ember.Component.extend({
     }
   },
 
-  _setupBoard(width, height, density) {
+  _setupBoard() {
+    const width=10, height=10;
     const board = [];
     for (let i = 0; i < height; i++) {
       const row = [];
       for (let j = 0; j < width; j++) {
-        const alive = Math.random() < density;
+        const alive = Math.random() < 0.5;
         row.pushObject(Cell.create({alive}));
       }
       board.pushObject(row);
