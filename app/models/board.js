@@ -14,6 +14,7 @@ export default class Board {
 
   _setupBoard() {
     const board = [
+      [Cell.create(), Cell.create(), Cell.create(), Cell.create(), Cell.create()],
       [Cell.create(), Cell.create(), Cell.create(), Cell.create({alive:true}), Cell.create()],
       [Cell.create(), Cell.create(), Cell.create(), Cell.create(), Cell.create({alive:true})],
       [Cell.create(), Cell.create(), Cell.create({alive:true}), Cell.create({alive:true}), Cell.create({alive:true})],

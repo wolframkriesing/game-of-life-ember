@@ -20,7 +20,6 @@ export default Ember.Object.extend({
 
   step() {
     const nextState = this.get('nextState');
-
     run.next(this, function() {
       this.set('alive', nextState);
     });
