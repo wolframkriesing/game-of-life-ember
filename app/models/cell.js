@@ -9,7 +9,7 @@ export default Ember.Object.extend({
 
   @computed('neighbours.@each.alive')
   aliveNeighboursCount(neighbours) {
-    return neighbours.filter(alive => alive).get('length');
+    return neighbours.filter(alive => alive).length;
   },
 
   @computed('alive', 'aliveNeighboursCount')

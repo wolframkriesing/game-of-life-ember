@@ -28,9 +28,12 @@ export default Ember.Component.extend({
 
   _step(shouldRepeat) {
     const board = this.get('board');
+
+    // calculate next generation
     board.forEach(function(row) {
       row.forEach(cell => cell.step())
     });
+
     if (shouldRepeat) {
       this.set('runLater', Ember.run.next(this, this._step, true));
     }

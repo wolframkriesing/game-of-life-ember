@@ -6,8 +6,6 @@ export default Ember.Component.extend({
   alive: computed.alias('cell.alive'),
 
   click() {
-    run.next(this, function() {
-      this.toggleProperty('alive');
-    });
+    this.toggleProperty('alive');
   }
 });
